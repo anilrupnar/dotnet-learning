@@ -156,7 +156,7 @@ The namespace `NumberGuessingGameWebApp.Pages` matches the project name and the 
 
 ## 📸 Screenshots
 
-![Number Guessing Game Web App](./Day02-NumberGuessingGameWebApp/NumberGuessingGameWebApp.png)
+![Number Guessing Game Web App](https://github.com/anilrupnar/dotnet-learning/blob/main/Day02-NumberGuessingGameWebApp/NumberGuessingGameWebApp.png)
 
 ---
 
