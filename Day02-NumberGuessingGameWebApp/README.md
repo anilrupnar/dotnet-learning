@@ -156,7 +156,7 @@ The namespace `NumberGuessingGameWebApp.Pages` matches the project name and the 
 
 ## 📸 Screenshots
 
-> Add screenshots of your running game here!
+![Number Guessing Game Web App](./Day02-NumberGuessingGameWebApp/NumberGuessingGameWebApp.png)
 
 ---
 
