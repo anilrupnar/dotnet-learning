@@ -8,6 +8,8 @@ Daily practice and small projects as I learn C# and .NET, working toward becomin
 |-----|---------|------|-----------------|
 | Day 1 | [Number Guessing Game](./Day01-NumberGuessingGame) | Console App | Variables, if/else, while loops, Random class, input validation with TryParse, null handling with ??, string interpolation |
 | Day 2 | [Number Guessing Game Web App](./Day02-NumberGuessingGameWebApp) | Web App | ASP.NET Core Razor Pages, Razor syntax (.cshtml), Model binding, OnGet/OnPost page handlers, Session state, Tag Helpers |
+| Day 3 | [EMI Calculator](./Day03/Day03-EMICalculator) | Console App | Methods, financial calculations, input validation, mathematical formulas, numeric formatting |
+| Day 3 | [EMI Calculator Web App](./Day03/Day03-EMICalculatorWebApp) | Web App | Razor Pages, form handling, model binding, financial calculations, result display |
 
 ## Projects
 
@@ -31,12 +33,35 @@ Daily practice and small projects as I learn C# and .NET, working toward becomin
 - App responds with Too Low / Too High feedback on the page
 - Play Again button resets the game
 
-## Why the Same Game Twice?
+### Day 3 — EMI Calculator (Console App)
+> Built a console-based EMI calculator to calculate loan repayment details.
+
+- Language: C# / .NET 8
+- Type: Console Application
+- Accepts Loan Amount, Interest Rate, and Loan Tenure
+- Calculates Monthly EMI using the standard EMI formula
+- Displays Monthly EMI, Total Payment, and Total Interest
+- Uses methods and input validation for better code structure
+
+### Day 3 — EMI Calculator (Web App)
+> Rebuilt the EMI Calculator as a browser-based web application.
+
+- Language: C# / .NET 8
+- Framework: ASP.NET Core Razor Pages
+- Accepts loan details through a web form
+- Calculates EMI instantly
+- Displays Monthly EMI, Total Payment, and Total Interest
+- Provides a simple and user-friendly interface
+
+## Why Build Both Console and Web Versions?
+
 Building the same project in two different ways helped me clearly see the difference between:
-- **Console App** — simple input/output in the terminal, great for learning core C# logic
-- **Web App** — browser-based UI, page lifecycle, form handling, and server-side state
+
+- **Console App** — simple input/output in the terminal, great for learning core C# logic.
+- **Web App** — browser-based UI, page lifecycle, form handling, model binding, and server-side processing.
 
 ## Goals
+
 - [ ] Build a project every day
 - [ ] Progress from Console → Web → API → Full Stack
 - [ ] Become a job-ready .NET developer
