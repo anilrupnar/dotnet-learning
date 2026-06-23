@@ -1,0 +1,228 @@
+@page
+@model IndexModel
+
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    .page-center {
+        min-height: calc(100vh - 160px); /* account for header + footer */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px 16px;
+    }
+
+    /* Scoped card so we don't override Bootstrap's .container used by layout */
+    .emi-card {
+        background: white;
+        border-radius: 14px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        padding: 40px;
+        width: 100%;
+        max-width: 520px;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 26px;
+        color: #1a1a2e;
+        margin-bottom: 6px;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #888;
+        font-size: 13px;
+        margin-bottom: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: #444;
+        margin-bottom: 6px;
+    }
+
+    input[type=number] {
+        width: 100%;
+        padding: 12px;
+        font-size: 15px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        outline: none;
+        transition: border 0.2s;
+    }
+
+    input[type=number]:focus {
+        border-color: #FF9900;
+    }
+
+    .error {
+        color: #e53935;
+        font-size: 12px;
+        margin-top: 4px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+        font-weight: 700;
+        background: #FF9900;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 8px;
+        transition: background 0.2s;
+    }
+
+    .btn:hover { background: #e68a00; }
+
+    .result {
+        margin-top: 30px;
+        background: #f8fafc;
+        border-radius: 10px;
+        padding: 24px;
+        border: 1px solid #e2e8f0;
+    }
+
+    .result h2 {
+        text-align: center;
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .result-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+        font-size: 15px;
+    }
+
+    .result-row:last-child { border-bottom: none; }
+
+    .result-row .label { color: #666; }
+
+    .result-row .value {
+        font-weight: 700;
+        color: #1a1a2e;
+    }
+
+    .emi-highlight {
+        background: #FF9900;
+        border-radius: 8px;
+        padding: 16px;
+        text-align: center;
+        margin-bottom: 16px;
+    }
+
+    .emi-highlight .emi-label {
+        color: white;
+        font-size: 13px;
+        opacity: 0.9;
+    }
+
+    .emi-highlight .emi-value {
+        color: white;
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+    .reset-btn {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        background: white;
+        color: #FF9900;
+        border: 2px solid #FF9900;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 16px;
+        transition: all 0.2s;
+    }
+
+    .reset-btn:hover {
+        background: #FF9900;
+        color: white;
+    }
+</style>
+
+    <div class="page-center">
+    <div class="emi-card">
+        <h1>🏦 EMI Calculator</h1>
+        <p class="subtitle">Calculate your monthly loan installment</p>
+
+        <form method="post">
+
+            <div class="form-group">
+                <label>Loan Amount (Rs.)</label>
+                <input type="number" name="Principal" value="@Model.Principal"
+                       placeholder="e.g. 500000" min="1000" step="1000" />
+                <span class="error">@Html.ValidationMessage("Principal")</span>
+            </div>
+
+            <div class="form-group">
+                <label>Annual Interest Rate (%)</label>
+                <input type="number" name="AnnualRate" value="@Model.AnnualRate"
+                       placeholder="e.g. 8.5" min="0.1" max="30" step="0.1" />
+                <span class="error">@Html.ValidationMessage("AnnualRate")</span>
+            </div>
+
+            <div class="form-group">
+                <label>Loan Tenure (months)</label>
+                <input type="number" name="TenureMonths" value="@Model.TenureMonths"
+                       placeholder="e.g. 60" min="1" max="360" />
+                <span class="error">@Html.ValidationMessage("TenureMonths")</span>
+            </div>
+
+            <button type="submit" class="btn">Calculate EMI</button>
+        </form>
+
+        @if (Model.ResultVisible)
+        {
+            <div class="result">
+                <h2>Loan Summary</h2>
+
+                <div class="emi-highlight">
+                    <div class="emi-label">Monthly EMI</div>
+                    <div class="emi-value">Rs. @Model.EMI.ToString("N2")</div>
+                </div>
+
+                <div class="result-row">
+                    <span class="label">Loan Amount</span>
+                    <span class="value">Rs. @Model.Principal?.ToString("N2")</span>
+                </div>
+                <div class="result-row">
+                    <span class="label">Interest Rate</span>
+                    <span class="value">@($"{Model.AnnualRate}% per year")</span>
+                </div>
+                <div class="result-row">
+                    <span class="label">Tenure</span>
+                    <span class="value">@Model.TenureMonths months</span>
+                </div>
+                <div class="result-row">
+                    <span class="label">Total Payment</span>
+                    <span class="value">Rs. @Model.TotalPayment.ToString("N2")</span>
+                </div>
+                <div class="result-row">
+                    <span class="label">Total Interest</span>
+                    <span class="value">Rs. @Model.TotalInterest.ToString("N2")</span>
+                </div>
+            </div>
+
+            <form method="get" action="/">
+                <button type="submit" class="reset-btn">🔄 Calculate Again</button>
+            </form>
+        }
+    </div>
+</div>

@@ -1,0 +1,94 @@
+@page
+@model ResultModel
+
+<style>
+    .result-page {
+        padding: 40px 16px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .result-box {
+        width: 100%;
+        max-width: 600px;
+        background: #f8fafc;
+        border-radius: 12px;
+        border: 1px solid #e6edf3;
+        padding: 28px;
+        box-shadow: 0 6px 30px rgba(0,0,0,0.06);
+    }
+
+    .result-header {
+        text-align: center;
+        font-weight: 700;
+        color: #707a83;
+        letter-spacing: 2px;
+        margin-bottom: 18px;
+    }
+
+    .emi-highlight {
+        background: #ff9900;
+        color: white;
+        border-radius: 10px;
+        padding: 18px 24px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .emi-highlight .label { font-size: 14px; opacity: 0.95; }
+    .emi-highlight .amount { font-size: 30px; font-weight: 800; margin-top: 6px; }
+
+    .summary-row { display: flex; justify-content: space-between; padding: 14px 0; border-top: 1px solid rgba(0,0,0,0.04); }
+    .summary-row .left { color: #6b7280; }
+    .summary-row .right { font-weight: 700; }
+
+    .actions { margin-top: 20px; }
+    .btn-outline-orange {
+        display: block;
+        width: 100%;
+        padding: 12px 18px;
+        border-radius: 8px;
+        border: 2px solid #ff9900;
+        color: #ff9900;
+        background: white;
+        text-align: center;
+        font-weight: 600;
+        text-decoration: none;
+    }
+</style>
+
+<div class="result-page">
+    <div class="result-box">
+        <div class="result-header">LOAN SUMMARY</div>
+
+        <div class="emi-highlight">
+            <div class="label">Monthly EMI</div>
+            <div class="amount">Rs. @Model.EMI.ToString("N2")</div>
+        </div>
+
+        <div class="summary-row">
+            <div class="left">Loan Amount</div>
+            <div class="right">Rs. @Model.Principal?.ToString("N2")</div>
+        </div>
+        <div class="summary-row">
+            <div class="left">Interest Rate</div>
+            <div class="right">@($"{Model.AnnualRate}% per year")</div>
+        </div>
+        <div class="summary-row">
+            <div class="left">Tenure</div>
+            <div class="right">@Model.TenureMonths months</div>
+        </div>
+        <div class="summary-row">
+            <div class="left">Total Payment</div>
+            <div class="right">Rs. @Model.TotalPayment.ToString("N2")</div>
+        </div>
+        <div class="summary-row">
+            <div class="left">Total Interest</div>
+            <div class="right">Rs. @Model.TotalInterest.ToString("N2")</div>
+        </div>
+
+        <div class="actions">
+            <a class="btn-outline-orange" asp-page="/Index">🔄 Calculate Again</a>
+        </div>
+    </div>
+</div>
