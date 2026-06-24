@@ -10,6 +10,7 @@ Daily practice and small projects as I learn C# and .NET, working toward becomin
 | Day 2 | [Number Guessing Game Web App](./Day02-NumberGuessingGameWebApp) | Web App | ASP.NET Core Razor Pages, Razor syntax (.cshtml), Model binding, OnGet/OnPost page handlers, Session state, Tag Helpers |
 | Day 3 | [EMI Calculator](./Day03/Day03-EMICalculator) | Console App | Methods, financial calculations, input validation, mathematical formulas, numeric formatting |
 | Day 3 | [EMI Calculator Web App](./Day03/Day03-EMICalculatorWebApp) | Web App | Razor Pages, form handling, model binding, financial calculations, result display |
+| Day 4 | [Student Grade Tracker Web App](./Day04-StudentGradeTrackerWebApp) | Web App | ASP.NET Core Razor Pages, Model Binding, Form Validation, OOP Concepts, Grade Calculation, Dynamic Data Display |
 
 ## Projects
 
@@ -53,15 +54,19 @@ Daily practice and small projects as I learn C# and .NET, working toward becomin
 - Displays Monthly EMI, Total Payment, and Total Interest
 - Provides a simple and user-friendly interface
 
-## Why Build Both Console and Web Versions?
+### Day 4 — Student Grade Tracker Web App
+> Built a browser-based application to manage student marks and calculate grades.
 
-Building the same project in two different ways helped me clearly see the difference between:
-
-- **Console App** — simple input/output in the terminal, great for learning core C# logic.
-- **Web App** — browser-based UI, page lifecycle, form handling, model binding, and server-side processing.
+- Language: C# / .NET 8
+- Framework: ASP.NET Core Razor Pages
+- Accepts student details and marks through a web form
+- Calculates Total Marks, Percentage, and Grade
+- Displays results dynamically on the page
+- Uses Model Binding and Validation
+- Implements Classes and OOP concepts
+- Provides a clean and user-friendly interface
 
 ## Goals
 
 - [ ] Build a project every day
-- [ ] Progress from Console → Web → API → Full Stack
 - [ ] Become a job-ready .NET developer
